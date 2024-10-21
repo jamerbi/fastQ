@@ -93,13 +93,17 @@ const Quiz: React.FC<QuizProps> = ({ quizzes }) => {
                       : 'text-red-500 font-bold'
                   }
                 >
-                  {question.options[userAnswers[index].charCodeAt(0) - 65]}
+                  {quizData.answers[question.question] !== undefined
+                    ? question.options[userAnswers[index].charCodeAt(0) - 65]
+                    : 'Answer not available'}
                 </span>
               </p>
               <p className="text-sm">
                 Correct answer:{' '}
                 <span className="text-green-500 font-bold">
-                  {question.options[quizData.answers[question.question].charCodeAt(0) - 65]}
+                  {quizData.answers[question.question] !== undefined
+                    ? question.options[quizData.answers[question.question].charCodeAt(0) - 65]
+                    : 'Answer not available'}
                 </span>
               </p>
             </div>
@@ -153,7 +157,9 @@ const Quiz: React.FC<QuizProps> = ({ quizzes }) => {
           <p>
             Correct answer:{' '}
             <span className="font-bold">
-              {question.options[quizData.answers[question.question].charCodeAt(0) - 65]}
+              {quizData.answers[question.question] !== undefined
+                ? question.options[quizData.answers[question.question].charCodeAt(0) - 65]
+                : 'Answer not available'}
             </span>
           </p>
         </div>
